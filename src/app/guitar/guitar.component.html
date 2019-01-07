@@ -1,0 +1,64 @@
+<div class="row mx-auto">
+
+  <div class="col-3 p-4">
+ <form class="mb-4 col-10 mx-auto" (change)="filterItems(filter)">
+   <div>
+     <h5> Category </h5>
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="filter.category.electric"> Electric
+        </label>
+      </div>
+      <div class="form-check">
+          <label class="form-check-label">
+              <input type="checkbox" class="form-check-input"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="filter.category.acoustic"> Acoustic
+          </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" [ngModelOptions]="{standalone: true}"[(ngModel)]="filter.category.bass"> Bass
+            </label>
+          </div>
+          </div>
+
+
+ <hr>
+ <div>
+    <h5> Price </h5>
+    <div class="form-check" *ngFor="let price of filter.price">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="price.selected"> {{price.low}} -  {{price.high}}
+        </label>
+      </div>
+    </div>
+
+      <hr>
+      <div>
+          <h5> Condition </h5>
+<div class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="filter.condition.new"> New
+        </label>
+      </div>
+      <div class="form-check">
+          <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" [ngModelOptions]="{standalone: true}" [(ngModel)]="filter.condition.used"> Used
+          </label>
+        </div>
+        </div>
+ </form>
+  </div>
+  <div class="col-9">
+    <div class="card">
+      <div class="card-header bg-secondary">
+        Header
+      </div>
+      <div class="card-body">
+        <div class="row" *ngIf="guitaritems">
+<app-item  class="mx-auto my-1" *ngFor="let item of guitaritems" [item]="item" [routerLink]="['/details',item.id]"></app-item>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
